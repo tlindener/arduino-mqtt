@@ -8,9 +8,7 @@
 #define MQTTCLIENT_QOS1 0
 #define MQTTCLIENT_QOS2 0
 
-#include <application.h>
-#include <Client.h>
-#include <Stream.h>
+#include <Particle.h>
 #include "lib/MQTTClient.h"
 #include "Network.h"
 #include "Timer.h"
