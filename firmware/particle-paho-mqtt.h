@@ -10,14 +10,14 @@
 
 #include <Particle.h>
 #include "MQTTClient.h"
-#include "Network.h"
+#include "MqttNetwork.h"
 #include "Timer.h"
 
 void messageReceived(String topic, String payload, char * bytes, unsigned int length);
 
 class MQTTClient {
 private:
-  Network network;
+  MqttNetwork network;
   MQTT::Client<Network, Timer, MQTT_BUFFER_SIZE, 0> * client;
   MQTTPacket_connectData options;
   const char * hostname;

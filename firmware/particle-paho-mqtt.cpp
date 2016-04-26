@@ -22,7 +22,7 @@ boolean MQTTClient::begin(const char * hostname, Client& client) {
 }
 
 boolean MQTTClient::begin(const char * _hostname, int _port, Client& _client) {
-  this->client = new MQTT::Client<Network, Timer, MQTT_BUFFER_SIZE, 0>(this->network);
+  this->client = new MQTT::Client<MqttNetwork, Timer, MQTT_BUFFER_SIZE, 0>(this->network);
   this->network.setClient(&_client);
   this->client->setDefaultMessageHandler(messageArrived);
   this->hostname = _hostname;

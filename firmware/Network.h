@@ -1,6 +1,6 @@
 #include <Particle.h>
 
-class Network {
+class MqttNetwork {
 private:
     Client* client;
 public:
