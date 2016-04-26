@@ -32,7 +32,7 @@
   * @param buflen the length in bytes of the data in the supplied buffer
   * @return error code.  1 is success
   */
-int MQTTDeserialize_publish(unsigned char* dup, int* qos, unsigned char* retained, unsigned short* packetid, MQTTString* topicName,
+int MQTTDeserialize_publish(unsigned char* dup, int* qos, unsigned char* mqtt_retained, unsigned short* packetid, MQTTString* topicName,
 		unsigned char** payload, int* payloadlen, unsigned char* buf, int buflen)
 {
 	MQTTHeader header = {0};
@@ -46,7 +46,7 @@ int MQTTDeserialize_publish(unsigned char* dup, int* qos, unsigned char* retaine
 		goto exit;
 	*dup = header.bits.dup;
 	*qos = header.bits.qos;
-	*retained = header.bits.retain;
+	*retained = header.bits.mqtt_retained;
 
 	curdata += (rc = MQTTPacket_decodeBuf(curdata, &mylen)); /* read remaining length */
 	enddata = curdata + mylen;
@@ -99,4 +99,3 @@ int MQTTDeserialize_ack(unsigned char* packettype, unsigned char* dup, unsigned 
 exit:
 	return rc;
 }
-

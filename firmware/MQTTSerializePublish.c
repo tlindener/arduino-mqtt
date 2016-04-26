@@ -23,7 +23,7 @@
 /**
   * Determines the length of the MQTT publish packet that would be produced using the supplied parameters
   * @param qos the MQTT QoS of the publish (packetid is omitted for QoS 0)
-  * @param topicName the topic name to be used in the publish  
+  * @param topicName the topic name to be used in the publish
   * @param payloadlen the length of the payload to be sent
   * @return the length of buffer needed to contain the serialized version of the packet
   */
@@ -51,7 +51,7 @@ int MQTTSerialize_publishLength(int qos, MQTTString topicName, int payloadlen)
   * @param payloadlen integer - the length of the MQTT payload
   * @return the length of the serialized data.  <= 0 indicates error
   */
-int MQTTSerialize_publish(unsigned char* buf, int buflen, unsigned char dup, int qos, unsigned char retained, unsigned short packetid,
+int MQTTSerialize_publish(unsigned char* buf, int buflen, unsigned char dup, int qos, unsigned char mqtt_retained, unsigned short packetid,
 		MQTTString topicName, unsigned char* payload, int payloadlen)
 {
 	unsigned char *ptr = buf;
@@ -68,7 +68,7 @@ int MQTTSerialize_publish(unsigned char* buf, int buflen, unsigned char dup, int
 	header.bits.type = PUBLISH;
 	header.bits.dup = dup;
 	header.bits.qos = qos;
-	header.bits.retain = retained;
+	header.bits.retain = mqtt_retained;
 	writeChar(&ptr, header.byte); /* write header */
 
 	ptr += MQTTPacket_encode(ptr, rem_len); /* write remaining length */;
@@ -160,5 +160,3 @@ int MQTTSerialize_pubcomp(unsigned char* buf, int buflen, unsigned short packeti
 {
 	return MQTTSerialize_ack(buf, buflen, PUBCOMP, 0, packetid);
 }
-
-
