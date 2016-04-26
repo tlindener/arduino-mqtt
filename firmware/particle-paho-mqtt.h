@@ -9,7 +9,7 @@
 #define MQTTCLIENT_QOS2 0
 
 #include <Particle.h>
-#include "lib/MQTTClient.h"
+#include "MQTTClient.h"
 #include "Network.h"
 #include "Timer.h"
 
