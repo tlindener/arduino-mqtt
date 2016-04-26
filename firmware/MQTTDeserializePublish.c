@@ -46,7 +46,7 @@ int MQTTDeserialize_publish(unsigned char* dup, int* qos, unsigned char* mqtt_re
 		goto exit;
 	*dup = header.bits.dup;
 	*qos = header.bits.qos;
-	*retained = header.bits.mqtt_retained;
+	*mqtt_retained = header.bits.retain;
 
 	curdata += (rc = MQTTPacket_decodeBuf(curdata, &mylen)); /* read remaining length */
 	enddata = curdata + mylen;
