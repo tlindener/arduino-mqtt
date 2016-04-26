@@ -1,0 +1,7 @@
+{
+  "name": "particle-paho-mqtt",
+  "author": "Tobias Lindener <tobias.lindener@gmail.com>",
+  "license": "MIT",
+  "version": "1.0.0",
+  "description": "A simple packaging of the Paho based Arduino MQTT library by Joël Gähwiler"
+}

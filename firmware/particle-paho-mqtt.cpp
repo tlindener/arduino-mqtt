@@ -4,7 +4,7 @@ void messageArrived(MQTT::MessageData& messageData) {
   MQTT::Message &message = messageData.message;
 
   // null terminate topic to create String object
-  int len = messageData.topicName.lenstring.len; 
+  int len = messageData.topicName.lenstring.len;
   char topic[len+1];
   memcpy(topic, messageData.topicName.lenstring.data, (size_t)len);
   topic[len] = '\0';
@@ -56,7 +56,7 @@ boolean MQTTClient::connect(const char * clientId, const char * username, const 
     this->options.username.cstring = (char*)username;
     this->options.password.cstring = (char*)password;
   }
-  
+
   return this->client->connect(this->options) == 0;
 }
 
@@ -101,7 +101,7 @@ void MQTTClient::unsubscribe(String topic) {
 void MQTTClient::unsubscribe(const char * topic) {
   client->unsubscribe(topic);
 }
-  
+
 void MQTTClient::loop() {
   if(!this->network.connected() && this->client->isConnected()) {
     // the following call will not send a packet but reset the instance

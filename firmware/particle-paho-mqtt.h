@@ -1,26 +1,33 @@
-#ifndef YUN_MQTT_CLIENT_H
-#define YUN_MQTT_CLIENT_H
+#ifndef MQTT_CLIENT_H
+#define MQTT_CLIENT_H
 
-#ifdef ARDUINO_AVR_YUN
+#ifndef MQTT_BUFFER_SIZE
+#define MQTT_BUFFER_SIZE 128
+#endif
 
-#include <Arduino.h>
-#include <Bridge.h>
+#define MQTTCLIENT_QOS1 0
+#define MQTTCLIENT_QOS2 0
+
+#include <application.h>
+#include <Client.h>
+#include <Stream.h>
+#include "lib/MQTTClient.h"
+#include "Network.h"
+#include "Timer.h"
 
 void messageReceived(String topic, String payload, char * bytes, unsigned int length);
 
-class YunMQTTClient {
+class MQTTClient {
 private:
-  Process process;
+  Network network;
+  MQTT::Client<Network, Timer, MQTT_BUFFER_SIZE, 0> * client;
+  MQTTPacket_connectData options;
   const char * hostname;
   int port;
-  const char * willTopic = "";
-  const char * willPayload = "";
-  boolean alive = false;
-  boolean updateBridge();
 public:
-  YunMQTTClient();
-  boolean begin(const char * hostname);
-  boolean begin(const char * hostname, int port);
+  MQTTClient();
+  boolean begin(const char * hostname, Client& client);
+  boolean begin(const char * hostname, int port, Client& client);
   void setWill(const char * topic);
   void setWill(const char * topic, const char * payload);
   boolean connect(const char * clientId);
@@ -39,5 +46,4 @@ public:
   void disconnect();
 };
 
-#endif //ARDUINO_AVR_YUN
-#endif //YUN_MQTT_CLIENT_H
+#endif

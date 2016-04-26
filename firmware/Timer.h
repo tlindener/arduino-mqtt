@@ -7,5 +7,5 @@ public:
     void countdown(int seconds);
     int left_ms();
 private:
-    unsigned long interval_end_ms; 
+    unsigned long interval_end_ms;
 };
