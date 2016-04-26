@@ -89,7 +89,7 @@ int MQTTSerialize_connect(unsigned char* buf, int buflen, MQTTPacket_connectData
 	if (flags.bits.will)
 	{
 		flags.bits.willQoS = options->will.qos;
-		flags.bits.willRetain = options->will.retained;
+		flags.bits.willRetain = options->will.mqtt_retained;
 	}
 
 	if (options->username.cstring || options->username.lenstring.data)

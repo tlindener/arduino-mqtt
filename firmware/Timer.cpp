@@ -1,4 +1,4 @@
-#include <Arduino.h>
+#include <Particle.h>
 #include "Timer.h"
 
 Timer::Timer() {

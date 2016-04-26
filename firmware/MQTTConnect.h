@@ -19,7 +19,7 @@
 #define MQTTCONNECT_H_
 
 #if !defined(DLLImport)
-  #define DLLImport 
+  #define DLLImport
 #endif
 #if !defined(DLLExport)
   #define DLLExport
@@ -73,7 +73,7 @@ typedef struct
 	/**
       * The retained flag for the LWT message (see MQTTAsync_message.retained).
       */
-	unsigned char retained;
+	unsigned char mqtt_retained;
 	/**
       * The quality of service setting for the LWT message (see
       * MQTTAsync_message.qos and @ref qos).
