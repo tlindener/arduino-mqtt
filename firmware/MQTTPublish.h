@@ -19,7 +19,7 @@
 #define MQTTPUBLISH_H_
 
 #if !defined(DLLImport)
-  #define DLLImport 
+  #define DLLImport
 #endif
 #if !defined(DLLExport)
   #define DLLExport
@@ -28,7 +28,7 @@
 DLLExport int MQTTSerialize_publish(unsigned char* buf, int buflen, unsigned char dup, int qos, unsigned char retained, unsigned short packetid,
 		MQTTString topicName, unsigned char* payload, int payloadlen);
 
-DLLExport int MQTTDeserialize_publish(unsigned char* dup, int* qos, unsigned char* retained, unsigned short* packetid, MQTTString* topicName,
+DLLExport int MQTTDeserialize_publish(unsigned char* dup, int* qos, unsigned char* mqtt_retained, unsigned short* packetid, MQTTString* topicName,
 		unsigned char** payload, int* payloadlen, unsigned char* buf, int len);
 
 DLLExport int MQTTSerialize_puback(unsigned char* buf, int buflen, unsigned short packetid);
